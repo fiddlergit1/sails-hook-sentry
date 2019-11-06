@@ -1,10 +1,9 @@
 {
-  "name": "sails-hook-sentry",
+  "name": "sails-hook-sentry-reworked",
   "version": "2.0.0-beta.2",
   "description": "Sails hook for Sentry (raven-node)",
   "main": "index.js",
   "keywords": [
-    "raven",
     "sentry",
     "node",
     "errors",
@@ -30,6 +29,7 @@
     "isHook": true
   },
   "dependencies": {
+    "@sentry/node": "5.7.1",
     "raven": "^1.2.0"
   },
   "devDependencies": {

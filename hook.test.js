@@ -8,7 +8,7 @@ describe('Asserts that sentry reworked hook works well', function () {
 
     Sails.lift({
       hooks: {
-        "sentry-reworked": require('./index'),
+        "sentryd": require('./index'),
         "grunt": false
       },
       log: {
@@ -31,6 +31,7 @@ describe('Asserts that sentry reworked hook works well', function () {
   })
 
   it("Should assert sails doesnt crash", function () {
+    console.log(sails.hooks.sentryd)
     return true
   })
 })

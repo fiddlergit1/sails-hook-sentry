@@ -10,7 +10,7 @@ module.exports = function Sentry(sails) {
      */
     defaults: {
       __configKey__: {
-        dns: null
+        dsn: null
       }
     },
 
@@ -21,12 +21,12 @@ module.exports = function Sentry(sails) {
      */
     initialize: function (cb) {
       var settings = sails.config[this.configKey];
-      if (!settings.dns) {
+      if (!settings.dsn) {
         sails.log.error('DSN for Sentry is required.');
         return cb();
       }
 
-      Sentry.init(settings.dns)
+      Sentry.init(settings.dsn)
 
       sails.sentry = Sentry;
 

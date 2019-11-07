@@ -26,6 +26,7 @@ module.exports = function Sentry(sails) {
         return cb();
       }
 
+      sails.log.debug(`SENTRY DSN IS`, settings.dsn)
       Sentry.init({ dsn: settings.dsn })
 
       sails.sentry = Sentry;

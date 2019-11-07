@@ -20,8 +20,6 @@ module.exports = function Sentry(sails) {
      */
     initialize: function (cb) {
       var settings = sails.config[this.configKey];
-      console.log(sails.config)
-      console.log()
       if (!settings.dns) {
         sails.log.verbose('DSN for Sentry is required.');
         return cb();

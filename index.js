@@ -26,7 +26,7 @@ module.exports = function Sentry(sails) {
         return cb();
       }
 
-      Sentry.init(settings.dsn)
+      Sentry.init({ dsn: settings.dsn })
 
       sails.sentry = Sentry;
 

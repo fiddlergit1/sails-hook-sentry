@@ -1,7 +1,7 @@
 {
   "name": "sails-hook-sentry-reworked",
-  "version": "0.1.2",
-  "description": "Sails hook for Sentry (raven-node)",
+  "version": "1.0.0",
+  "description": "Sails hook for Sentry (raven-node). Reworked",
   "main": "index.js",
   "keywords": [
     "sentry",
@@ -17,20 +17,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/listepo/sails-hook-sentry.git"
+    "url": "https://github.com/fantasylabs/sails-hook-sentry.git"
   },
   "author": "Ivan Tugay <listepo@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/listepo/sails-hook-sentry/issues"
+    "url": "https://github.com/fantasylabs/sails-hook-sentry/issues"
   },
-  "homepage": "https://github.com/listepo/sails-hook-sentry",
+  "homepage": "https://github.com/fantasylabs/sails-hook-sentry",
   "sails": {
     "isHook": true
   },
   "dependencies": {
-    "@sentry/node": "5.7.1",
-    "raven": "^1.2.0"
+    "@sentry/node": "5.7.1"
   },
   "devDependencies": {
     "eslint": "^3.18.0",

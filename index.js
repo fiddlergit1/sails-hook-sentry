@@ -1,4 +1,5 @@
 module.exports = function Sentry(sails) {
+  const Sentry = require('@sentry/node')
   return {
     /**
      * Default configuration
@@ -21,12 +22,12 @@ module.exports = function Sentry(sails) {
     initialize: function (cb) {
       var settings = sails.config[this.configKey];
       if (!settings.dns) {
-        sails.log.verbose('DSN for Sentry is required.');
+        sails.log.error('DSN for Sentry is required.');
         return cb();
       }
 
-      const Sentry = require('@sentry/node')
       Sentry.init(settings.dns)
+
       sails.sentry = Sentry;
 
       // handles Bluebird's promises unhandled rejections
@@ -37,6 +38,7 @@ module.exports = function Sentry(sails) {
 
       // We're done initializing.
       return cb();
-    }
+    },
+    sentry: Sentry
   };
 };

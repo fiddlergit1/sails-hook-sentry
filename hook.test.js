@@ -1,4 +1,4 @@
-const Sails = require('sails').Sails
+const Sails = require('sails')
 
 describe('Asserts that sentry reworked hook works well', function () {
   let sails;
@@ -6,9 +6,9 @@ describe('Asserts that sentry reworked hook works well', function () {
   before(function (done) {
     this.timeout(0)
 
-    Sails().lift({
+    Sails.lift({
       hooks: {
-        "sails-hook-sentry-reworked": require('./index'),
+        "sentry-reworked": require('./index'),
         "grunt": false
       },
       log: {
@@ -18,7 +18,7 @@ describe('Asserts that sentry reworked hook works well', function () {
       if (err) {
         return done(err)
       }
-
+      sails = _sails;
       return done()
     })
   })

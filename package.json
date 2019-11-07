@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-sentry-reworked",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Sails hook for Sentry (raven-node)",
   "main": "index.js",
   "keywords": [

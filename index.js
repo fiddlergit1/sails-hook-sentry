@@ -21,6 +21,11 @@ module.exports = function Sentry(sails) {
      */
     initialize: function (cb) {
       var settings = sails.config[this.configKey];
+      if (!settings.active) {
+        sails.log.info('Sentry hook was set to inactive in config.');
+        return cb();
+      }
+
       if (!settings.dsn) {
         sails.log.error('DSN for Sentry is required.');
         return cb();

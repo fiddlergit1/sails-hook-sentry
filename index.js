@@ -1,19 +1,6 @@
 module.exports = function Sentry(sails) {
-  const Sentry = require('@sentry/node')
+  const Sentry = require("@sentry/node");
   return {
-    /**
-     * Default configuration
-     *
-     * We do this in a function since the configuration key for
-     * the hook is itself configurable, so we can't just return
-     * an object.
-     */
-    defaults: {
-      __configKey__: {
-        dsn: null
-      }
-    },
-
     /**
      * Initialize the hook
      * @param  {Function} cb Callback for when we're done initializing
@@ -22,29 +9,41 @@ module.exports = function Sentry(sails) {
     initialize: function (cb) {
       var settings = sails.config[this.configKey];
       if (!settings.active) {
-        sails.log.info('Sentry hook was set to inactive in config.');
+        sails.log.info("Sentry hook was set to inactive in config.");
         return cb();
       }
 
       if (!settings.dsn) {
-        sails.log.error('DSN for Sentry is required.');
+        sails.log.error("DSN for Sentry is required.");
         return cb();
       }
 
-      sails.log.debug(`SENTRY DSN IS`, settings.dsn)
-      Sentry.init({ dsn: settings.dsn })
+      const config = {
+        dsn: settings.dsn,
+      };
+
+      if (settings?.options?.release) {
+        config.release = settings.options.release;
+      }
+
+      if (settings?.options?.environment) {
+        config.environment = settings.options.environment;
+      }
+
+      Sentry.init(config);
+      sails.log.info(`Sentry initialized with DSN: `, settings.dsn);
 
       sails.sentry = Sentry;
 
       // handles Bluebird's promises unhandled rejections
-      process.on('unhandledRejection', function (reason) {
-        console.error('Unhandled rejection:', reason);
+      process.on("unhandledRejection", function (reason) {
+        console.error("Unhandled rejection:", reason);
         Sentry.captureException(reason);
       });
 
       // We're done initializing.
       return cb();
     },
-    sentry: Sentry
+    sentry: Sentry,
   };
 };

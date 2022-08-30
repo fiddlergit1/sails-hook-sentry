@@ -29,7 +29,7 @@
     "isHook": true
   },
   "dependencies": {
-    "@sentry/node": "5.7.1"
+    "@sentry/node": "7.11.1"
   },
   "devDependencies": {
     "eslint": "^3.18.0",

@@ -1,7 +1,7 @@
 {
   "name": "sails-hook-sentry",
   "version": "1.0.6",
-  "description": "Sails hook for Sentry (raven-node). Reworked",
+  "description": "Sails hook for Sentry",
   "main": "index.js",
   "keywords": [
     "sentry",
@@ -29,7 +29,7 @@
     "isHook": true
   },
   "dependencies": {
-    "@sentry/node": "7.11.1"
+    "@sentry/node": "7.34.0"
   },
   "devDependencies": {
     "eslint": "^3.18.0",
